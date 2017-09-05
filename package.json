@@ -1,0 +1,50 @@
+{
+  "name": "winston-azure-functions",
+  "version": "0.0.1",
+  "description": "Winston transport for azure functions",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "node dist/app.js",
+    "debug": "node --inspect dist/app.js",
+    "precommit": "lint-staged",
+    "prepare": "taskr"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --no-semi --single-quote --write",
+      "git add"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/upcompass/winston-azure-functions.git"
+  },
+  "keywords": [
+    "winston",
+    "logging",
+    "azure",
+    "functions"
+  ],
+  "author": "oss@e107.com.ar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/upcompass/winston-azure-functions/issues"
+  },
+  "homepage": "https://github.com/upcompass/winston-azure-functions#readme",
+  "dependencies": {
+    "winston": "^2.3.1"
+  },
+  "devDependencies": {
+    "@taskr/clear": "^1.1.0",
+    "@taskr/esnext": "^1.1.0",
+    "@taskr/shell": "^1.1.0",
+    "husky": "^0.14.3",
+    "jest": "^21.0.1",
+    "lint-staged": "^4.1.0",
+    "prettier": "^1.6.1",
+    "taskr": "^1.1.0",
+    "tslint": "^5.7.0",
+    "tslint-config-prettier": "^1.5.0",
+    "typescript": "^2.5.2"
+  }
+}
