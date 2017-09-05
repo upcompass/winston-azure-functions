@@ -1,10 +1,12 @@
 /* global context */
 import winston = require('winston')
 
+export type LogLevel = 'error' | 'warn' | 'info' | 'verbose'
+
 // Create the transport
 export class AzureFunctions extends winston.Transport {
   context: any
-  level: string
+  level: LogLevel
   name: string
 
   constructor(options) {
