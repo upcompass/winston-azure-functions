@@ -10,6 +10,7 @@ module.exports = (context) => {
     ]
   })
   winston.info('Initializing function')
+  context.done()
 }
 ```
 
