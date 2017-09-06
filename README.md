@@ -1,5 +1,18 @@
 # winston-azure-functions
 
+[![Build Status](https://img.shields.io/travis/upcompass/winston-azure-functions/master.svg?style=flat)](https://travis-ci.org/upcompass/winston-azure-functions)
+[![Dependencies](https://img.shields.io/david/upcompass/winston-azure-functions.svg?style=flat)](https://david-dm.org/upcompass/winston-azure-functions)
+
+## How to use
+
+### Setup
+Install it:
+
+```bash
+npm install winston-azure-functions --save
+```
+
+### Example
 ```typescript
 import { AzureFunctions } from 'winston-azure-functions'
 import winston = require('winston')
@@ -14,7 +27,7 @@ module.exports = (context) => {
 }
 ```
 
-## Supported log levels
+### Supported log levels
 
 | Log level   | Description                                |
 | ----------- | ------------------------------------------ |
