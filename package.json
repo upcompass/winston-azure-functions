@@ -4,8 +4,7 @@
   "description": "Winston transport for azure functions",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/app.js",
-    "debug": "node --inspect dist/app.js",
+    "test": "jest",
     "precommit": "lint-staged",
     "prepare": "taskr"
   },
@@ -13,6 +12,19 @@
     "*.ts": [
       "prettier --no-semi --single-quote --write",
       "git add"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
     ]
   },
   "repository": {
@@ -43,6 +55,7 @@
     "lint-staged": "^4.1.0",
     "prettier": "^1.6.1",
     "taskr": "^1.1.0",
+    "ts-jest": "^21.0.0",
     "tslint": "^5.7.0",
     "tslint-config-prettier": "^1.5.0",
     "typescript": "^2.5.2"
