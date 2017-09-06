@@ -12,7 +12,11 @@ Install it:
 npm install winston-azure-functions --save
 ```
 
-### Example
+```bash
+yarn add winston-azure-functions
+```
+
+### Usage
 ```typescript
 import { AzureFunctions } from 'winston-azure-functions'
 import winston = require('winston')
