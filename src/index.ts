@@ -17,7 +17,11 @@ export class AzureFunctions extends winston.Transport {
   }
 
   log = (level, message, meta, callback) => {
-    this.context.log[level](`[${level}] ${message}`)
+    if (this.context.log[level]) {
+      this.context.log[level](`[${level}] ${message}`)
+    } else {
+      this.context.log(`[${level}] ${message}`)
+    }
     callback()
   }
 }
