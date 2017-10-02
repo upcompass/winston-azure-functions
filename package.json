@@ -4,9 +4,12 @@
   "description": "Winston transport for azure functions",
   "main": "dist/index.js",
   "scripts": {
+    "commit": "git-cz",
     "test": "jest",
     "precommit": "lint-staged",
-    "prepare": "taskr"
+    "prepare": "taskr",
+    "commitmsg": "validate-commit-msg",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "lint-staged": {
     "*.ts": [
@@ -50,14 +53,18 @@
     "@taskr/clear": "^1.1.0",
     "@taskr/esnext": "^1.1.0",
     "@taskr/shell": "^1.1.0",
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
     "husky": "^0.14.3",
     "jest": "^21.0.1",
     "lint-staged": "^4.1.0",
     "prettier": "^1.6.1",
+    "semantic-release": "^8.0.3",
     "taskr": "^1.1.0",
     "ts-jest": "^21.0.0",
     "tslint": "^5.7.0",
     "tslint-config-prettier": "^1.5.0",
-    "typescript": "^2.5.2"
+    "typescript": "^2.5.2",
+    "validate-commit-msg": "^2.14.0"
   }
 }
