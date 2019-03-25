@@ -1,26 +1,75 @@
-/* global context */
-import winston = require('winston')
+import { LogEntry } from 'winston'
+import * as Transport from 'winston-transport'
 
-export type LogLevel = 'error' | 'warn' | 'info' | 'verbose'
+/**
+ * Azure Functions supported log levels.
+ * @type { 'error' | 'warn' | 'info' | 'verbose' }
+ */
+export type AzureFunctionsLogLevel = 'error' | 'warn' | 'info' | 'verbose'
 
-// Create the transport
-export class AzureFunctions extends winston.Transport {
+/**
+ * Options object interface for AzureFunctions transport stream constructor.
+ * @interface
+ * @extends {TransportStreamOptions}
+ * @property {object} context - An Azure Function context object.
+ * @property {AzureFunctionsLogLevel} [level] - Specifies the maximum severity
+ *   level of messages that the transport should log.
+ */
+export interface AzureFunctionsStreamOptions
+  extends Transport.TransportStreamOptions {
   context: any
-  level: LogLevel
+  level?: AzureFunctionsLogLevel
+}
+
+/**
+ * Transport for outputting to Azure Function's `context.log`.
+ * @type {AzureFunctions}
+ * @extends {TransportStream}
+ */
+export class AzureFunctions extends Transport {
+  /**
+   * An Azure Function context object.
+   * @member {Object}
+   */
+  context: any
+
+  /**
+   * Specifies the maximum severity level of messages that the transport should
+   * log.
+   * @member {AzureFunctionsLogLevel}
+   */
+  level: AzureFunctionsLogLevel
+
+  /**
+   * The name of the TransportStream.
+   * @member {string}
+   */
   name: string
 
-  constructor(options) {
+  /**
+   * Constructor function for the AzureFunctions transport object responsible
+   * for sending log messages to Azure Function's context.log object.
+   * @constructor
+   * @param {AzureFunctionsStreamOptions}
+   */
+  constructor(options: AzureFunctionsStreamOptions) {
     super(options)
     this.name = 'azure-functions'
     this.context = options.context
     this.level = options.level || 'info'
   }
 
-  log = (level, message, meta, callback) => {
+  /**
+   * Core logging method exposed to Winston.
+   * @param {LogEntry} info - LogEntry object containing level and message.
+   * @param {Function} callback - TODO: add param description.
+   * @returns {undefined}
+   */
+  log = ({ level, message }: LogEntry, callback: () => void) => {
     if (this.context.log[level]) {
-      this.context.log[level](`[${level}] ${message}`)
+      this.context.log[level](message)
     } else {
-      this.context.log(`[${level}] ${message}`)
+      this.context.log(`[${level}]`, message)
     }
     callback()
   }
