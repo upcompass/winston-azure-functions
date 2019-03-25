@@ -3,7 +3,7 @@ import * as winston from 'winston'
 import { AzureFunctions, AzureFunctionsLogLevel } from '../src'
 
 // creates a mock context for use in testing
-const context = jest.fn().mockImplementation(() => ({
+const context = {
   log: jest.fn().mockImplementation(() => {
     const log = jest.fn() as any
     log.info = jest.fn()
@@ -12,7 +12,7 @@ const context = jest.fn().mockImplementation(() => ({
     log.warn = jest.fn()
     return log
   })()
-}))()
+}
 
 afterEach(() => {
   jest.resetAllMocks()
