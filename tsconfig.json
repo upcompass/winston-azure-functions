@@ -9,7 +9,7 @@
         "declaration": true,
         "moduleResolution": "node",
         "allowSyntheticDefaultImports": true,
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,
         "outDir": "dist",
