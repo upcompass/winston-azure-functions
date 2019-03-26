@@ -1,7 +1,7 @@
 const config = require('./tsconfig.json')
 
 export async function compile(task) {
-  await task.source('src/**/index.ts').shell('yarn tsc')
+  await task.source('src/**/index.ts').shell('yarn tsc -p tsconfig.build.json')
 }
 
 export async function build(task) {
