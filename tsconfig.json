@@ -6,9 +6,9 @@
             }
         ],
         "module": "commonjs",
+        "esModuleInterop": true,
         "declaration": true,
         "moduleResolution": "node",
-        "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
         "removeComments": true,
         "preserveConstEnums": true,

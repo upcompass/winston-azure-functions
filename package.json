@@ -29,7 +29,8 @@
       "js",
       "json",
       "jsx"
-    ]
+    ],
+    "testPathIgnorePatterns": ["/dist/"]
   },
   "repository": {
     "type": "git",
