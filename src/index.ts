@@ -64,7 +64,7 @@ export class AzureFunctions extends TransportStream {
    * @param {Function} callback - TODO: add param description.
    * @returns {undefined}
    */
-  log = ({ level, message }: LogEntry, callback: () => void) => {
+  log({ level, message }: LogEntry, callback: () => void) {
     if (this.context.log[level]) {
       this.context.log[level](message)
     } else {
