@@ -1,5 +1,5 @@
 import { LogEntry } from 'winston'
-import * as Transport from 'winston-transport'
+import TransportStream, { TransportStreamOptions } from 'winston-transport'
 
 /**
  * Azure Functions supported log levels.
@@ -15,8 +15,7 @@ export type AzureFunctionsLogLevel = 'error' | 'warn' | 'info' | 'verbose'
  * @property {AzureFunctionsLogLevel} [level] - Specifies the maximum severity
  *   level of messages that the transport should log.
  */
-export interface AzureFunctionsStreamOptions
-  extends Transport.TransportStreamOptions {
+export interface AzureFunctionsStreamOptions extends TransportStreamOptions {
   context: any
   level?: AzureFunctionsLogLevel
 }
@@ -26,7 +25,7 @@ export interface AzureFunctionsStreamOptions
  * @type {AzureFunctions}
  * @extends {TransportStream}
  */
-export class AzureFunctions extends Transport {
+export class AzureFunctions extends TransportStream {
   /**
    * An Azure Function context object.
    * @member {Object}
