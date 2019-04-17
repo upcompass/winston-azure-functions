@@ -1,6 +1,6 @@
 {
   "name": "winston-azure-functions",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Winston transport for azure functions",
   "main": "dist/index.js",
   "scripts": {
@@ -30,7 +30,9 @@
       "json",
       "jsx"
     ],
-    "testPathIgnorePatterns": ["/dist/"]
+    "testPathIgnorePatterns": [
+      "/dist/"
+    ]
   },
   "repository": {
     "type": "git",
